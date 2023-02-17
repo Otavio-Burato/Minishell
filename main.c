@@ -6,11 +6,16 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:23 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/16 19:02:20 by oburato          ###   ########.fr       */
+/*   Updated: 2023/02/17 19:19:54 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	add_one(int n)
+{
+	return (n + 1);
+}
 
 int	main(int argc, char *argv[], char *envp[])
 {
