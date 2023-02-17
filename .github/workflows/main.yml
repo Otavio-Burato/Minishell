@@ -1,11 +1,36 @@
-on: [push, pull_request]
+
+name: Unit Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
 
 jobs:
-  norminette_job:
+  build:
+
     runs-on: ubuntu-latest
-    name: norminette
+
     steps:
-    - uses: actions/checkout@v2
-    - run: python3 -m pip install --upgrade pip setuptools
-    - run: python3 -m pip install norminette
-    - run: norminette .
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install --upgrade pip setuptools
+        python -m pip install norminette
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Run norminette
+      run: |
+        norminette -R CheckForbiddenSourceHeader .
+    - name: Test run
+      run: |
+        make test
+        python -m unittest discover -s ./test -p test_*.py
