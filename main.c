@@ -6,13 +6,13 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:23 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/17 19:03:52 by oburato          ###   ########.fr       */
+/*   Updated: 2023/02/17 19:19:54 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int add_one(int n)
+int	add_one(int n)
 {
 	return (n + 1);
 }
