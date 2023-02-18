@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_readline.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 19:01:23 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/18 18:28:27 by oburato          ###   ########.fr       */
+/*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
+/*   Updated: 2023/02/18 18:32:30 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_data	g_data;
-
-int	main(int argc, char *argv[], char *envp[])
+int	ft_sanitize_line(char *line)
 {
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	while (1)
-	{
-		ft_read_line();
-	}
-	return (0);
+	if (!line)
+		return (0);
+	return (1);
+}
+
+void	ft_read_line(void)
+{
+	char	*line;
+
+	line = readline("minishell::<>  ");
+	if (line == NULL)
+		return ;
+	if (line && *line)
+		add_history(line);
+	free(g_data.cmd);
+	ft_sanitize_line(line);
+	g_data.cmd = line;
 }

@@ -6,28 +6,32 @@
 #    By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/02/17 20:42:50 by oburato          ###   ########.fr        #
+#    Updated: 2023/02/18 18:51:26 by oburato          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=minishell
-SRCS=main.c
+SRCS=main.c			\
+	ft_readline.c	\
+	ft_tokenize.c
 
-OBJS=$(SRCS:.c=.o)
+OBJS=$(SRCS:%.c=./build/%.o)
+./build/%.o: %.c $(HEADER)
+	$(CC) -c $(CFLAGS) $< -o $@
+
 CC=cc
-CFLAGS=-Werror -Wall -Wextra -fsanitize=address
+CFLAGS=-Werror -Wall -Wextra -fPIC ##-fsanitize=address
+# remove late                 ^^^^
+LINKERS = -lrt -lm -lreadline
 HEADER=minishell.h
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) ./build/$(OBJS) -o $(NAME)
-
-%.o: %.c $(HEADER)
-	$(CC) -c $(CFLAGS) $< -o ./build/$@
+	$(CC) $(CFLAGS) $(OBJS) $(LINKERS) -o $(NAME)
 
 clean:
-	rm -rf ./build/$(OBJS)
+	rm -rf $(OBJS)
 
 fclean: clean
 	rm -rf $(NAME)
@@ -35,14 +39,14 @@ fclean: clean
 re: fclean all
 
 # Used in pipeline to run the tests
-SOBJS=$(SRCS:.c=.so)
-%.so: %.c $(HEADER)
-	$(CC) -shared -o ./test/$@ $<
+SO_LIBS=/lib/x86_64-linux-gnu/libreadline.so /lib/x86_64-linux-gnu/libhistory.so
+shared: $(OBJS) $(HEADER)
+	@$(CC) -shared -o ./test/load.so $(OBJS) $(SO_LIBS)
 
-clean_test:
-	rm -rf ./test/$(SOBJS)
+cleant: clean
+	@rm -rf ./test/load.so
 
-test: clean_test $(SOBJS)
+test: cleant shared
 
 run:	all
-	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --trace-children=yes --trace-children-skip='/bin/,/sbin/' --suppressions=readline.supp ./minishell
+	@valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --trace-children=yes --trace-children-skip='/bin/,/sbin/' --suppressions=readline.supp ./minishell

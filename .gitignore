@@ -1,3 +1,4 @@
 *.so
 *.o
 minishell
+test/__pycache__
