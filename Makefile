@@ -6,7 +6,7 @@
 #    By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/02/19 00:55:33 by oburato          ###   ########.fr        #
+#    Updated: 2023/02/19 01:01:49 by oburato          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ re: fclean all
 # Used in pipeline to run the tests
 SO_LIBS=/lib/x86_64-linux-gnu/libreadline.so /lib/x86_64-linux-gnu/libhistory.so
 shared: $(OBJS) $(HEADER)
-	@$(CC) -shared -o ./test/load.so $(OBJS) $(SO_LIBS)
+	@$(CC) -shared -o ./test/load.so $(OBJS) $(SO_LIBS) $(LIBFT)
 
 cleant: clean
 	@rm -rf ./test/load.so
