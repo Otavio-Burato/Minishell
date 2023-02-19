@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 19:01:23 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/18 21:48:34 by oburato          ###   ########.fr       */
+/*   Created: 2022/04/24 15:36:24 by oburato           #+#    #+#             */
+/*   Updated: 2022/04/24 17:53:14 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_data	g_data;
-
-static void	ft_load_args(int argc, char *argv[], char *envp[])
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	if (argc > 1)
-		exit(2);
-	g_data.argv = argv;
-	g_data.envp = envp;
-}
+	size_t			index;
+	int				len;
+	unsigned char	*sc1;
+	unsigned char	*sc2;
 
-int	main(int argc, char *argv[], char *envp[])
-{
-	ft_load_args(argc, argv, envp);
-	while (1)
+	index = 0;
+	sc1 = ((unsigned char *)s1);
+	sc2 = ((unsigned char *)s2);
+	if (n == 0)
+		return (0);
+	while (index < n)
 	{
-		ft_read_line();
+		len = (sc1[index] - sc2[index]);
+		if (len)
+			return (len);
+		index++;
 	}
 	return (0);
 }

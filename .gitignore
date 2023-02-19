@@ -1,4 +1,5 @@
 *.so
 *.o
+*.a
 minishell
 test/__pycache__

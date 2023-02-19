@@ -6,7 +6,7 @@
 #    By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/02/18 18:51:26 by oburato          ###   ########.fr        #
+#    Updated: 2023/02/18 21:56:27 by oburato          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,18 +22,26 @@ OBJS=$(SRCS:%.c=./build/%.o)
 CC=cc
 CFLAGS=-Werror -Wall -Wextra -fPIC ##-fsanitize=address
 # remove late                 ^^^^
+
 LINKERS = -lrt -lm -lreadline
 HEADER=minishell.h
 
+LIBFT = ./libft/libft.a
+
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LINKERS) -o $(NAME)
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LINKERS) -o $(NAME)
+
+$(LIBFT):
+	@make -C ./libft/
 
 clean:
+	@make clean -C ./libft/
 	rm -rf $(OBJS)
 
 fclean: clean
+	@make fclean -C ./libft/
 	rm -rf $(NAME)
 
 re: fclean all
@@ -50,3 +58,5 @@ test: cleant shared
 
 run:	all
 	@valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --trace-children=yes --trace-children-skip='/bin/,/sbin/' --suppressions=readline.supp ./minishell
+
+.PHONY:	all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/18 18:32:30 by oburato          ###   ########.fr       */
+/*   Updated: 2023/02/18 22:06:01 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,13 @@ int	ft_sanitize_line(char *line)
 void	ft_read_line(void)
 {
 	char	*line;
+	char	*cwd;
 
-	line = readline("minishell::<>  ");
+	cwd = getcwd(NULL, 0);
+	g_data.pwd_prompt = ft_strjoin(cwd, "$: ");
+	line = readline(g_data.pwd_prompt);
+	free(g_data.pwd_prompt);
+	free(cwd);
 	if (line == NULL)
 		return ;
 	if (line && *line)

@@ -6,12 +6,14 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/18 18:39:02 by oburato          ###   ########.fr       */
+/*   Updated: 2023/02/18 22:01:42 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
+# include "./libft/libft.h"
 
 # include <signal.h>
 
@@ -29,7 +31,10 @@
  */
 typedef struct s_data
 {
+	char	**argv;
+	char	**envp;
 	char	*cmd;
+	char	*pwd_prompt;
 }			t_data;
 
 extern t_data				g_data;

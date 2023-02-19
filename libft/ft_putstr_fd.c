@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 19:01:23 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/18 21:48:34 by oburato          ###   ########.fr       */
+/*   Created: 2022/05/07 15:22:53 by oburato           #+#    #+#             */
+/*   Updated: 2022/05/07 16:24:13 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_data	g_data;
-
-static void	ft_load_args(int argc, char *argv[], char *envp[])
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (argc > 1)
-		exit(2);
-	g_data.argv = argv;
-	g_data.envp = envp;
-}
-
-int	main(int argc, char *argv[], char *envp[])
-{
-	ft_load_args(argc, argv, envp);
-	while (1)
-	{
-		ft_read_line();
-	}
-	return (0);
+	if (s)
+		write(fd, s, ft_strlen(s));
 }

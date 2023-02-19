@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 19:01:23 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/18 21:48:34 by oburato          ###   ########.fr       */
+/*   Created: 2022/04/10 23:18:51 by oburato           #+#    #+#             */
+/*   Updated: 2022/04/24 18:22:57 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_data	g_data;
-
-static void	ft_load_args(int argc, char *argv[], char *envp[])
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if (argc > 1)
-		exit(2);
-	g_data.argv = argv;
-	g_data.envp = envp;
-}
+	size_t			index;
+	unsigned char	*ptr;
+	unsigned char	unsigd_c;
 
-int	main(int argc, char *argv[], char *envp[])
-{
-	ft_load_args(argc, argv, envp);
-	while (1)
+	index = 0;
+	unsigd_c = (unsigned char) c;
+	ptr = (unsigned char *)s;
+	if (!n)
+		return (0);
+	while (index < n)
 	{
-		ft_read_line();
+		if (((unsigned char *)s)[index] == unsigd_c)
+			return (ptr + index);
+		index++;
 	}
 	return (0);
 }
