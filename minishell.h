@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/18 22:01:42 by oburato          ###   ########.fr       */
+/*   Updated: 2023/02/19 14:06:51 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,28 @@ void	ft_read_line(void);
 int		ft_sanitize_line(char *line);
 // end prompt
 
+// init signals
 typedef struct sigaction	t_sigaction;
+
+/**
+ * @brief the int signal is the ^C signal and it is captured
+ * and manipulated in this function
+ * @param signal  2
+ */
+void	ft_handle_sigint(int signal);
+
+/**
+ * @brief
+ */
+void	ft_load_signal(void);
+//end signals
+
+//init free
+
+/**
+ * @brief
+ */
+void	ft_destruct_global_variable(void);
+//end free
 
 #endif

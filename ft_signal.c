@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_readline.c                                      :+:      :+:    :+:   */
+/*   ft_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/19 10:31:51 by oburato          ###   ########.fr       */
+/*   Created: 2023/02/19 10:20:18 by oburato           #+#    #+#             */
+/*   Updated: 2023/02/19 14:00:14 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_sanitize_line(char *line)
+void	ft_load_signal(void)
 {
-	if (!line)
-		return (0);
-	return (1);
+	sigset_t	mask;
+	t_sigaction	sigint;
+
+	sigemptyset(&mask);
+	sigint.sa_flags = SA_RESTART;
+	sigint.sa_mask = mask;
+	sigint.sa_handler = &ft_handle_sigint;
+	sigaction(SIGINT, &sigint, NULL);
 }
 
-void	ft_read_line(void)
+void	ft_handle_sigint(int signal)
 {
-	char	*line;
-	char	*cwd;
-
-	cwd = getcwd(NULL, 0);
-	g_data.pwd_prompt = ft_strjoin(cwd, "$: ");
-	free(cwd);
-	line = readline(g_data.pwd_prompt);
-	free(g_data.pwd_prompt);
-	if (line == NULL)
-		return ;
-	if (line && *line)
-		add_history(line);
-	ft_sanitize_line(line);
-	free(g_data.cmd);
-	g_data.cmd = line;
+	printf("^C\n");
+	ft_destruct_global_variable();
+	exit(signal);
 }
