@@ -1,11 +1,17 @@
 {
-    "python.testing.unittestArgs": [
-        "-v",
-        "-s",
-        "./test",
-        "-p",
-        "test_*.py"
-    ],
-    "python.testing.pytestEnabled": false,
-    "python.testing.unittestEnabled": true
+	"python.testing.unittestArgs": [
+		"-v",
+		"-s",
+		"./test",
+		"-p",
+		"test_*.py"
+	],
+	"python.testing.pytestEnabled": false,
+	"python.testing.unittestEnabled": true,
+	"files.associations": {
+		"*.excalidraw": "json",
+		"*.excalidrawlib": "json",
+		"readline.h": "c",
+		"libft.h": "c"
+	}
 }

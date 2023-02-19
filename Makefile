@@ -6,40 +6,58 @@
 #    By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/02/17 19:19:37 by oburato          ###   ########.fr        #
+#    Updated: 2023/02/19 01:03:43 by oburato          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=minishell
-SRCS=main.c
+SRCS=main.c			\
+	ft_readline.c	\
+	ft_tokenize.c
 
-OBJS=$(SRCS:.c=.o)
+OBJS=$(SRCS:%.c=./build/%.o)
+./build/%.o: %.c $(HEADER)
+	mkdir -p ./build
+	$(CC) -c $(CFLAGS) $< -o $@
+
 CC=cc
-CFLAGS=-Werror -Wall -Wextra -fsanitize=address
+CFLAGS=-Werror -Wall -Wextra -fPIC ##-fsanitize=address
+# remove late                 ^^^^
+
+LINKERS = -lrt -lm -lreadline
 HEADER=minishell.h
+
+LIBFT = ./libft/libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) ./build/$(OBJS) -o $(NAME)
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LINKERS) -o $(NAME)
 
-%.o: %.c $(HEADER)
-	$(CC) -c $(CFLAGS) $< -o ./build/$@
+$(LIBFT):
+	@make -C ./libft/
 
 clean:
-	rm -rf ./build/$(OBJS)
+	@make clean -C ./libft/
+	rm -rf $(OBJS)
 
 fclean: clean
+	@make fclean -C ./libft/
 	rm -rf $(NAME)
 
 re: fclean all
 
 # Used in pipeline to run the tests
-SOBJS=$(SRCS:.c=.so)
-%.so: %.c $(HEADER)
-	$(CC) -shared -o ./test/$@ $<
+SO_LIBS=/lib/x86_64-linux-gnu/libreadline.so /lib/x86_64-linux-gnu/libhistory.so
+shared: $(OBJS) $(HEADER) $(LIBFT)
+	@$(CC) -shared -o ./test/load.so $(OBJS) $(SO_LIBS) $(LIBFT)
 
-clean_test:
-	rm -rf ./test/$(SOBJS)
+cleant: clean
+	@rm -rf ./test/load.so
 
-test: clean_test $(SOBJS)
+test: cleant shared
+
+run:	all
+	@valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --trace-children=yes --trace-children-skip='/bin/,/sbin/' --suppressions=readline.supp ./minishell
+
+.PHONY:	all clean fclean re

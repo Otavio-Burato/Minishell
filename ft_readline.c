@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_readline.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 19:01:23 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/18 21:48:34 by oburato          ###   ########.fr       */
+/*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
+/*   Updated: 2023/02/18 22:06:01 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_data	g_data;
-
-static void	ft_load_args(int argc, char *argv[], char *envp[])
+int	ft_sanitize_line(char *line)
 {
-	if (argc > 1)
-		exit(2);
-	g_data.argv = argv;
-	g_data.envp = envp;
+	if (!line)
+		return (0);
+	return (1);
 }
 
-int	main(int argc, char *argv[], char *envp[])
+void	ft_read_line(void)
 {
-	ft_load_args(argc, argv, envp);
-	while (1)
-	{
-		ft_read_line();
-	}
-	return (0);
+	char	*line;
+	char	*cwd;
+
+	cwd = getcwd(NULL, 0);
+	g_data.pwd_prompt = ft_strjoin(cwd, "$: ");
+	line = readline(g_data.pwd_prompt);
+	free(g_data.pwd_prompt);
+	free(cwd);
+	if (line == NULL)
+		return ;
+	if (line && *line)
+		add_history(line);
+	free(g_data.cmd);
+	ft_sanitize_line(line);
+	g_data.cmd = line;
 }

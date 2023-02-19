@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 19:01:23 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/18 21:48:34 by oburato          ###   ########.fr       */
+/*   Created: 2022/04/10 22:45:23 by oburato           #+#    #+#             */
+/*   Updated: 2022/04/10 23:17:58 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_data	g_data;
-
-static void	ft_load_args(int argc, char *argv[], char *envp[])
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	if (argc > 1)
-		exit(2);
-	g_data.argv = argv;
-	g_data.envp = envp;
-}
+	int	index;
+	int	len;
 
-int	main(int argc, char *argv[], char *envp[])
-{
-	ft_load_args(argc, argv, envp);
-	while (1)
+	index = 0;
+	len = 0;
+	while ((s1[index] != '\0' || s2[index] != '\0') && n--)
 	{
-		ft_read_line();
+		len = ((unsigned char)s1[index] - (unsigned char)s2[index]);
+		if (len != 0)
+			break ;
+		index++;
 	}
-	return (0);
+	return (len);
 }

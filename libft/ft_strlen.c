@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 19:01:23 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/18 21:48:34 by oburato          ###   ########.fr       */
+/*   Created: 2022/04/10 15:12:22 by oburato           #+#    #+#             */
+/*   Updated: 2022/04/10 17:12:49 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_data	g_data;
-
-static void	ft_load_args(int argc, char *argv[], char *envp[])
+size_t	ft_strlen(const char *s)
 {
-	if (argc > 1)
-		exit(2);
-	g_data.argv = argv;
-	g_data.envp = envp;
-}
+	int	length;
 
-int	main(int argc, char *argv[], char *envp[])
-{
-	ft_load_args(argc, argv, envp);
-	while (1)
-	{
-		ft_read_line();
-	}
-	return (0);
+	length = 0;
+	while (s[length] != '\0')
+		length++;
+	return (length);
 }
