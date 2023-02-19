@@ -6,7 +6,7 @@
 #    By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/02/18 21:56:27 by oburato          ###   ########.fr        #
+#    Updated: 2023/02/19 00:55:33 by oburato          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS=main.c			\
 
 OBJS=$(SRCS:%.c=./build/%.o)
 ./build/%.o: %.c $(HEADER)
+	mkdir -p ./build
 	$(CC) -c $(CFLAGS) $< -o $@
 
 CC=cc
