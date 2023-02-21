@@ -13,7 +13,8 @@
 NAME=minishell
 SRCS=main.c			\
 	ft_readline.c	\
-	ft_tokenize.c
+	ft_tokenize.c	\
+	find_cmd.c		
 
 OBJS=$(SRCS:%.c=./build/%.o)
 ./build/%.o: %.c $(HEADER)

@@ -19,7 +19,7 @@ int	ft_sanitize_line(char *line)
 	return (1);
 }
 
-void	ft_read_line(void)
+void	ft_read_line(char **env)
 {
 	char	*line;
 	char	*cwd;
@@ -33,6 +33,8 @@ void	ft_read_line(void)
 		return ;
 	if (line && *line)
 		add_history(line);
+	//TODO: estuudar como tratar a linha
+	find_cmd(line, env);
 	free(g_data.cmd);
 	ft_sanitize_line(line);
 	g_data.cmd = line;

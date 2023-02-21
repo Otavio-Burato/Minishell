@@ -50,5 +50,8 @@ char	*ft_itoa(int n);
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_putendl_fd(char *s, int fd);
+int     ft_printf(char *printable);
+void	ft_free(void *ptr);
+void	ft_free_array(char **ptr);
 
 #endif

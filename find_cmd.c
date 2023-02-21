@@ -49,3 +49,21 @@ char	*find_path(char *cmd, char **env)
 	ft_free_array(paths);
 	return (0);
 }
+
+int	find_cmd(char *cmd, char **env)
+{
+	// size_t name_size;
+
+	// name_size = strlen(cmd);
+	// if(ft_strncmp(cmd, "echo", name_size) == 0)
+	// if(ft_strncmp(cmd, "cd", name_size) == 0)
+	// if(ft_strncmp(cmd, "pwd", name_size) == 0)
+	// if(ft_strncmp(cmd, "export", name_size) == 0)
+	// if(ft_strncmp(cmd, "unset", name_size) == 0)
+	// if(ft_strncmp(cmd, "env", name_size) == 0)
+	// if(ft_strncmp(cmd, "exit", name_size) == 0)
+
+	ft_printf(find_path(cmd, env));
+	ft_printf("\n");
+	return (1);
+}
