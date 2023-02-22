@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 22:45:23 by oburato           #+#    #+#             */
-/*   Updated: 2022/04/10 23:17:58 by oburato          ###   ########.fr       */
+/*   Created: 2023/02/21 14:39:52 by msander           #+#    #+#             */
+/*   Updated: 2023/02/21 14:40:00 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *str1, const char *str2, size_t n)
+void	ft_free(void *ptr)
 {
-	size_t	i;
-
-	i = 0;
-	while (n && (str1[i] || str2[i]))
+	if (ptr)
 	{
-		if (str1[i] != str2[i])
-			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
-		i++;
-		n--;
+		free(ptr);
+		ptr = NULL;
 	}
-	return (0);
+}
+
+void	ft_free_array(char **ptr)
+{
+	int	len;
+
+	len = 0;
+	while (ptr[len])
+	{
+		ft_free(ptr[len]);
+		len++;
+	}
+	ft_free(ptr);
 }
