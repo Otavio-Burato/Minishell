@@ -6,7 +6,7 @@
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:25:12 by msander           #+#    #+#             */
-/*   Updated: 2023/02/22 17:28:08 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/22 17:36:01 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	echo(char *cmd)
 	while (cmd_arg[i])
 	{
 		printf("%s", cmd_arg[i]);
+		if(cmd_arg[i] +1 != 0)
+			printf(" ");
 		i++;
 	}
 	if (ft_strncmp(cmd_arg[1], "-n", 2) != 0)
