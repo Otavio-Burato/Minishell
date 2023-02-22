@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/20 13:21:38 by oburato          ###   ########.fr       */
+/*   Updated: 2023/02/22 20:45:07 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_sanitize_line(char *line)
 	return (1);
 }
 
-void	ft_read_line(void)
+void	ft_read_line(char **env)
 {
 	char	*line;
 	char	*cwd;
@@ -33,6 +33,9 @@ void	ft_read_line(void)
 		return ;
 	if (line && *line)
 		add_history(line);
+	// TODO: estuudar como tratar a linha
+	find_cmd(line, env);
+	free(g_data.cmd);
 	ft_sanitize_line(line);
 	free(g_data.cmd);
 	g_data.cmd = line;

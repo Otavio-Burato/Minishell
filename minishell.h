@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/19 14:06:51 by oburato          ###   ########.fr       */
+/*   Updated: 2023/02/22 20:44:50 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ extern t_data				g_data;
  * @brief	this function is resposible by read line by line in terminal
  * and make a previos sixtax check
  */
-void	ft_read_line(void);
+void	ft_read_line(char **env);
 
 /**
  * @brief a simple function to sanitize string from prompt
@@ -55,7 +55,14 @@ void	ft_read_line(void);
 int		ft_sanitize_line(char *line);
 // end prompt
 
-// init signals
+/**
+ * @brief functionj to find comand path in ENV or redirect to builtins
+ *
+ * @param line
+ * @return int return 1 to OK and 0 to NOK
+ */
+int		find_cmd(char *cmd, char **env);
+
 typedef struct sigaction	t_sigaction;
 
 /**

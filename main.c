@@ -28,7 +28,7 @@ int	main(int argc, char *argv[], char *envp[])
 	ft_load_signal();
 	while (1)
 	{
-		ft_read_line();
+		ft_read_line(envp);
 	}
 	return (0);
 }

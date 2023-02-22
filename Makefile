@@ -6,7 +6,7 @@
 #    By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/02/20 14:30:23 by oburato          ###   ########.fr        #
+#    Updated: 2023/02/22 20:44:39 by oburato          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS=main.c			\
 	ft_signal.c		\
 	ft_free.c		\
 	ft_hashtable.c
+	find_cmd.c
 
 OBJS=$(SRCS:%.c=./build/%.o)
 ./build/%.o: %.c $(HEADER)
