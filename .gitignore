@@ -2,4 +2,4 @@
 *.o
 *.a
 minishell
-test/__pycache__
+test/__pycache__/*
