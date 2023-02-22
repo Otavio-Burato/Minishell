@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_path.c                                        :+:      :+:    :+:   */
+/*   find_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msaner- <msander-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 03:38:50 by msaner-           #+#    #+#             */
-/*   Updated: 2022/11/21 23:18:00 by msaner-          ###   ########.fr       */
+/*   Updated: 2023/02/22 15:32:43 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	find_cmd(char *cmd, char **env)
 	// if(ft_strncmp(cmd, "env", name_size) == 0)
 	// if(ft_strncmp(cmd, "exit", name_size) == 0)
 
-	ft_printf(find_path(cmd, env));
-	ft_printf("\n");
+	printf("%s", find_path(cmd, env));
+	printf("\n");
 	return (1);
 }

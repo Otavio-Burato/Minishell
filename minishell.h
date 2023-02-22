@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/18 22:01:42 by oburato          ###   ########.fr       */
+/*   Updated: 2023/02/21 14:41:54 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		ft_sanitize_line(char *line);
  * @param line
  * @return int return 1 to OK and 0 to NOK
  */
-int	find_cmd(char *cmd, char **env);
+int		find_cmd(char *cmd, char **env);
 
 typedef struct sigaction	t_sigaction;
 
