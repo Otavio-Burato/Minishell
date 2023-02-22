@@ -6,7 +6,7 @@
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 03:38:50 by msaner-           #+#    #+#             */
-/*   Updated: 2023/02/22 16:12:21 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/22 17:24:57 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,22 @@ char	*find_path(char *cmd, char **env)
 
 int	find_cmd(char *cmd, char **env)
 {
-	size_t name_size;
-
-	name_size = strlen(cmd);
-	// if(ft_strncmp(cmd, "echo", name_size) == 0)
+	if(ft_strncmp(cmd, "echo", 4) == 0)
+	{
+		echo(cmd);
+		return (1);
+	}
 	// if(ft_strncmp(cmd, "cd", name_size) == 0)
-	if(ft_strncmp(cmd, "pwd", name_size) == 0)
+	if(ft_strncmp(cmd, "pwd", 3) == 0)
+	{
 		pwd(env);
+		return (1);
+	}
 	// if(ft_strncmp(cmd, "export", name_size) == 0)
 	// if(ft_strncmp(cmd, "unset", name_size) == 0)
 	// if(ft_strncmp(cmd, "env", name_size) == 0)
 	// if(ft_strncmp(cmd, "exit", name_size) == 0)
 
 	printf("%s", find_path(cmd, env));
-	printf("\n");
 	return (1);
 }

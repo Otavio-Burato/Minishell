@@ -6,16 +6,18 @@
 #    By: msander <msander@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/02/22 16:14:27 by msander          ###   ########.fr        #
+#    Updated: 2023/02/22 16:30:52 by msander          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=minishell
-SRCS=main.c			\
-	ft_readline.c	\
-	ft_tokenize.c	\
-	find_cmd.c		\
-	pwd.c 	
+SRCS=main.c				\
+	ft_readline.c		\
+	ft_tokenize.c		\
+	find_cmd.c			\
+	pwd.c				\
+	echo.c
+	# builtins/pwd.c
 	# builtins/pwd.c 	
 
 OBJS=$(SRCS:%.c=./build/%.o)
