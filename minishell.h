@@ -6,7 +6,7 @@
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/21 14:41:54 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/22 16:12:26 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,23 @@ int		ft_sanitize_line(char *line);
 // end prompt
 
 /**
- * @brief functionj to find comand path in ENV or redirect to builtins
+ * @brief function to find comand path in ENV or redirect to builtins
  *
- * @param line
+ * @param cmd, env
  * @return int return 1 to OK and 0 to NOK
  */
 int		find_cmd(char *cmd, char **env);
+
+/**
+ * @brief functionj to find specific line in ENV
+ *
+ * @param env, target
+ * @return char *, the line
+ */
+char	*find_in_env(char **env, char *target);
+
+///Builtins
+void	pwd(char **env);
 
 typedef struct sigaction	t_sigaction;
 

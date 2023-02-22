@@ -6,11 +6,21 @@
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 03:38:50 by msaner-           #+#    #+#             */
-/*   Updated: 2023/02/22 15:32:43 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/22 16:12:21 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	*find_in_env(char **env, char *target)
+{
+	int		i;
+
+	i = 0;
+	while (ft_strnstr(env[i], target, ft_strlen(target)) == 0)
+		i++;
+	return (env[i]);
+}
 
 static char	**find_paths(char **env)
 {
@@ -52,12 +62,13 @@ char	*find_path(char *cmd, char **env)
 
 int	find_cmd(char *cmd, char **env)
 {
-	// size_t name_size;
+	size_t name_size;
 
-	// name_size = strlen(cmd);
+	name_size = strlen(cmd);
 	// if(ft_strncmp(cmd, "echo", name_size) == 0)
 	// if(ft_strncmp(cmd, "cd", name_size) == 0)
-	// if(ft_strncmp(cmd, "pwd", name_size) == 0)
+	if(ft_strncmp(cmd, "pwd", name_size) == 0)
+		pwd(env);
 	// if(ft_strncmp(cmd, "export", name_size) == 0)
 	// if(ft_strncmp(cmd, "unset", name_size) == 0)
 	// if(ft_strncmp(cmd, "env", name_size) == 0)

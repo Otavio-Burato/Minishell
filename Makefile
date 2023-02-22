@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+         #
+#    By: msander <msander@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/02/19 01:03:43 by oburato          ###   ########.fr        #
+#    Updated: 2023/02/22 16:14:27 by msander          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME=minishell
 SRCS=main.c			\
 	ft_readline.c	\
 	ft_tokenize.c	\
-	find_cmd.c		
+	find_cmd.c		\
+	pwd.c 	
+	# builtins/pwd.c 	
 
 OBJS=$(SRCS:%.c=./build/%.o)
 ./build/%.o: %.c $(HEADER)
