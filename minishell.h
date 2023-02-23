@@ -6,12 +6,33 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/22 20:44:50 by oburato          ###   ########.fr       */
+/*   Updated: 2023/02/22 22:27:57 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
+// struct hash table
+typedef struct s_hi
+{
+	char	*key;
+	char	*value;
+}	t_hi;
+
+typedef struct s_linkedlist
+{
+	t_hi *item;
+	struct s_linkedlist *next;
+}	t_linkedlist;
+
+typedef struct s_ht
+{
+	t_hi			**items;
+	t_linkedlist	**overflow_buckets;
+	int				size;
+	int				count;
+}	t_ht;
 
 # include "./libft/libft.h"
 
@@ -25,6 +46,24 @@
 # include <stdio.h>
 
 # include <sys/types.h>
+
+#define CAPACITY 50000 // Size of the HashTable.
+
+
+t_linkedlist *allocate_list();
+t_linkedlist *linkedlist_insert(t_linkedlist *list, t_hi *item);
+t_hi *linkedlist_remove(t_linkedlist *list);
+t_linkedlist **create_overflow_buckets(t_ht *table);
+void handle_collision(t_ht *table, unsigned long index, t_hi *item);
+
+void	ht_insert(t_ht *table, char *key, char *value);
+char	*ht_search(t_ht *table, char *key);
+void	ht_delete(t_ht *table, char *key);
+
+unsigned long	ft_hash_function(char *str);
+t_hi	*ft_create_item(char *key, char *value);
+t_ht	*ft_create_table(int size);
+void	print_table(t_ht* table);
 
 /**
  * @brief Data storage all variable we need

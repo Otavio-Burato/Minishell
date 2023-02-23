@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 13:57:29 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/22 15:34:17 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/22 22:26:51 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include "../minishell.h"
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -52,5 +53,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_putendl_fd(char *s, int fd);
 void	ft_free(void *ptr);
 void	ft_free_array(char **ptr);
+
+void	ft_free_item(t_hi* item);
+void	ft_free_table(t_ht* table);
+void	free_linkedlist(t_linkedlist *list);
+void	free_overflow_buckets(t_ht *table);
 
 #endif

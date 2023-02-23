@@ -6,17 +6,19 @@
 #    By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/02/22 20:44:39 by oburato          ###   ########.fr        #
+#    Updated: 2023/02/22 22:41:45 by oburato          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=minishell
-SRCS=main.c			\
-	ft_readline.c	\
-	ft_tokenize.c	\
-	ft_signal.c		\
-	ft_free.c		\
-	ft_hashtable.c
+SRCS=main.c				\
+	ft_readline.c		\
+	ft_tokenize.c		\
+	ft_signal.c			\
+	ft_free.c			\
+	ft_hashtable.c		\
+	ft_listtable.c		\
+	ft_hash_operation.c	\
 	find_cmd.c
 
 OBJS=$(SRCS:%.c=./build/%.o)
@@ -25,7 +27,7 @@ OBJS=$(SRCS:%.c=./build/%.o)
 	$(CC) -c $(CFLAGS) $< -o $@
 
 CC=cc
-CFLAGS=-Werror -Wall -Wextra -fPIC -fsanitize=address
+CFLAGS=-Werror -Wall -Wextra -fPIC #-fsanitize=address
 # remove late                 ^^^^
 
 LINKERS = -lrt -lm -lreadline

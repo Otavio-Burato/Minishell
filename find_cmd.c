@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 03:38:50 by msaner-           #+#    #+#             */
-/*   Updated: 2023/02/22 15:32:43 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/22 20:56:32 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,16 @@ int	find_cmd(char *cmd, char **env)
 	// if(ft_strncmp(cmd, "env", name_size) == 0)
 	// if(ft_strncmp(cmd, "exit", name_size) == 0)
 
-	printf("%s", find_path(cmd, env));
-	printf("\n");
+	if (access(cmd, F_OK) == 0)
+	{
+		printf("%s", cmd);
+		printf("\n");
+	}
+	else
+	{
+		printf("find in: %s", find_path(cmd, env));
+		printf("\n");
+	}
+
 	return (1);
 }

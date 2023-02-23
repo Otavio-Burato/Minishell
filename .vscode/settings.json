@@ -16,6 +16,18 @@
 		"array": "c",
 		"string_view": "c",
 		"initializer_list": "c",
-		"utility": "c"
+		"utility": "c",
+		"*.tcc": "c",
+		"deque": "c",
+		"string": "c",
+		"vector": "c",
+		"algorithm": "c",
+		"istream": "c",
+		"limits": "c",
+		"numeric": "c",
+		"streambuf": "c",
+		"functional": "c",
+		"minishell.h": "c",
+		"unistd.h": "c"
 	}
 }
