@@ -6,7 +6,7 @@
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/22 23:31:41 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/22 23:36:42 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,7 @@ void	ft_read_line(char **env)
 		return ;
 	if (line && *line)
 		add_history(line);
-	
-
 	pid = fork();
-	// if (pid == -1)
-	// 	print_error_fd("\033[31mError: Internal Error. fork()\n\e[0m", 1);
-	// if (pid == 0)
-	// 	execute_in(argv, pipe_fd, env);
-	// else
-	// {
-	// 	waitpid(pid, NULL, 0);
-	// 	execute_out(argv, pipe_fd, env);
-	// }
-
 	if(pid == 0)
 		exec_argv(line, env);
 	else
