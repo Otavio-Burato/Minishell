@@ -6,7 +6,7 @@
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/22 23:36:42 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/22 23:37:42 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_read_line(char **env)
 		return ;
 	if (line && *line)
 		add_history(line);
+
 	pid = fork();
 	if(pid == 0)
 		exec_argv(line, env);
