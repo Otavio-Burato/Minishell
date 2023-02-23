@@ -6,7 +6,7 @@
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 03:38:50 by msaner-           #+#    #+#             */
-/*   Updated: 2023/02/22 17:24:57 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/22 23:14:10 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,24 +60,39 @@ char	*find_path(char *cmd, char **env)
 	return (0);
 }
 
-int	find_cmd(char *cmd, char **env)
+void    execute(char *argv, char **env)
 {
-	if(ft_strncmp(cmd, "echo", 4) == 0)
+    char    *path;
+    char    **cmd_arg;
+
+    cmd_arg = ft_split_ignore(argv, ' ', '\'');
+    path = find_path(cmd_arg[0], env);
+    if (!path)
+    {
+        ft_free_array(cmd_arg);
+        exit(127);
+    }
+    execve(path, cmd_arg, env);
+}
+
+void	exec_argv(char *argv, char **env)
+{
+	if(ft_strncmp(argv, "echo", 4) == 0)
 	{
-		echo(cmd);
-		return (1);
+		echo(argv);
+		return ;
 	}
-	// if(ft_strncmp(cmd, "cd", name_size) == 0)
-	if(ft_strncmp(cmd, "pwd", 3) == 0)
+	// if(ft_strncmp(argv, "cd", 2) == 0)
+	if(ft_strncmp(argv, "pwd", 3) == 0)
 	{
 		pwd(env);
-		return (1);
+		return ;
 	}
-	// if(ft_strncmp(cmd, "export", name_size) == 0)
-	// if(ft_strncmp(cmd, "unset", name_size) == 0)
-	// if(ft_strncmp(cmd, "env", name_size) == 0)
-	// if(ft_strncmp(cmd, "exit", name_size) == 0)
+	// if(ft_strncmp(argv, "export", 6) == 0)
+	// if(ft_strncmp(argv, "unset", 5) == 0)
+	// if(ft_strncmp(argv, "env", 3) == 0)
+	// if(ft_strncmp(argv, "exit", 4) == 0)
 
-	printf("%s", find_path(cmd, env));
-	return (1);
+	execute(argv, env);
+	return ;
 }

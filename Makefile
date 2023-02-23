@@ -6,7 +6,7 @@
 #    By: msander <msander@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/02/22 16:30:52 by msander          ###   ########.fr        #
+#    Updated: 2023/02/22 23:32:23 by msander          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJS=$(SRCS:%.c=./build/%.o)
 	$(CC) -c $(CFLAGS) $< -o $@
 
 CC=cc
-CFLAGS=-Werror -Wall -Wextra -fPIC ##-fsanitize=address
+CFLAGS=-Werror -Wall -Wextra -fPIC -fsanitize=address
 # remove late                 ^^^^
 
 LINKERS = -lrt -lm -lreadline

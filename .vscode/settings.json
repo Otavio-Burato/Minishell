@@ -12,6 +12,7 @@
 		"*.excalidraw": "json",
 		"*.excalidrawlib": "json",
 		"readline.h": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"wait.h": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/22 16:33:10 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/22 23:30:07 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <fcntl.h>
+# include <sys/wait.h>
 
 # include <sys/types.h>
 
@@ -56,15 +58,15 @@ int		ft_sanitize_line(char *line);
 // end prompt
 
 /**
- * @brief function to find comand path in ENV or redirect to builtins
+ * @brief function to execute comand
  *
  * @param cmd, env
- * @return int return 1 to OK and 0 to NOK
+ * @return void
  */
-int		find_cmd(char *cmd, char **env);
+void	exec_argv(char *argv, char **env);
 
 /**
- * @brief functionj to find specific line in ENV
+ * @brief function to find specific line in ENV
  *
  * @param env, target
  * @return char *, the line

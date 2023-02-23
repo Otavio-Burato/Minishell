@@ -6,7 +6,7 @@
 #    By: msander <msander@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/10 14:02:16 by oburato           #+#    #+#              #
-#    Updated: 2023/02/22 15:34:18 by msander          ###   ########.fr        #
+#    Updated: 2023/02/22 23:14:39 by msander          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS=	ft_isalpha.c	ft_isdigit.c	ft_isalnum.c	ft_isascii.c \
 		ft_memchr.c		ft_memcmp.c		ft_calloc.c		ft_strjoin.c \
 		ft_substr.c		ft_strtrim.c	ft_split.c		ft_itoa.c \
 		ft_strmapi.c	ft_striteri.c	ft_putchar_fd.c	ft_putstr_fd.c \
-		ft_putendl_fd.c	ft_putnbr_fd.c	ft_free.c
+		ft_putendl_fd.c	ft_putnbr_fd.c	ft_free.c		ft_split_ignore.c \
 
 OBJS=$(SRCS:.c=.o)
 CC=cc
