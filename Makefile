@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: msander <msander@student.42.fr>            +#+  +:+       +#+         #
+#    By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/02/26 17:19:36 by msander          ###   ########.fr        #
+#    Updated: 2023/02/26 20:04:01 by oburato          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ OBJS=$(SRCS:%.c=./build/%.o)
 	$(CC) -c $(CFLAGS) $< -o $@
 
 CC=cc
-CFLAGS=-Werror -Wall -Wextra -fPIC -fsanitize=address
+CFLAGS=-Werror -Wall -Wextra -fPIC #-fsanitize=address
 # remove late                 ^^^^
 
 LINKERS = -lrt -lm -lreadline
@@ -34,6 +34,7 @@ HEADER=minishell.h
 LIBFT = ./libft/libft.a
 
 all: $(NAME)
+	@make all -C ./libft/
 
 $(NAME): $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LINKERS) -o $(NAME)
@@ -60,7 +61,7 @@ shared: $(OBJS) $(HEADER) $(LIBFT)
 cleant: clean
 	@rm -rf ./test/load.so
 
-test: cleant shared
+test: re cleant shared
 
 run:	all
 	@valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --trace-children=yes --trace-children-skip='/bin/,/sbin/' --suppressions=readline.supp ./minishell
