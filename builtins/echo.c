@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 16:05:13 by msander           #+#    #+#             */
-/*   Updated: 2023/02/22 16:17:01 by msander          ###   ########.fr       */
+/*   Created: 2023/02/22 16:25:12 by msander           #+#    #+#             */
+/*   Updated: 2023/02/26 17:15:25 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./minishell.h"
+#include "../minishell.h"
 
-void	pwd(char **env)
+void	echo(char *cmd)
 {
-	char	*path;
+	int		i;
+	char	**cmd_arg;
 
-	path = find_in_env(env, "PWD");
-	path = path + 4;
-	printf("%s\n", path);
+	cmd_arg = ft_split(cmd, ' ');
+	i = 1;
+	if (ft_strncmp(cmd_arg[i], "-n", 2) == 0)
+		i++;
+	while (cmd_arg[i])
+	{
+		printf("%s", cmd_arg[i]);
+		if(cmd_arg[i] +1 != 0)
+			printf(" ");
+		i++;
+	}
+	if (ft_strncmp(cmd_arg[1], "-n", 2) != 0)
+		printf("\n");
 }

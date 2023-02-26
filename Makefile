@@ -6,7 +6,7 @@
 #    By: msander <msander@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/02/22 23:32:23 by msander          ###   ########.fr        #
+#    Updated: 2023/02/26 17:19:36 by msander          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,13 @@ SRCS=main.c				\
 	ft_readline.c		\
 	ft_tokenize.c		\
 	find_cmd.c			\
-	pwd.c				\
-	echo.c
-	# builtins/pwd.c
-	# builtins/pwd.c 	
+	builtins/pwd.c		\
+	builtins/echo.c		\
 
 OBJS=$(SRCS:%.c=./build/%.o)
 ./build/%.o: %.c $(HEADER)
 	mkdir -p ./build
+	mkdir -p ./build/builtins
 	$(CC) -c $(CFLAGS) $< -o $@
 
 CC=cc
@@ -45,6 +44,7 @@ $(LIBFT):
 clean:
 	@make clean -C ./libft/
 	rm -rf $(OBJS)
+	rm -rf ./build
 
 fclean: clean
 	@make fclean -C ./libft/
