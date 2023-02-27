@@ -6,13 +6,13 @@
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:05:13 by msander           #+#    #+#             */
-/*   Updated: 2023/02/26 17:15:22 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/26 18:48:42 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	pwd(char **env)
+void	ft_pwd(char **env)
 {
 	char	*path;
 

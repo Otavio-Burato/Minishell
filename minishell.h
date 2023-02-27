@@ -6,7 +6,7 @@
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/22 23:30:07 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/26 18:22:44 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,12 @@ void	exec_argv(char *argv, char **env);
  */
 char	*find_in_env(char **env, char *target);
 
-///Builtins
-void	pwd(char **env);
-void	echo(char *cmd);
+/**
+ * @brief Builtins
+*/
+void	ft_pwd(char **env);
+void	ft_echo(char *cmd);
+void	ft_cd(char *args);
 
 typedef struct sigaction	t_sigaction;
 

@@ -6,7 +6,7 @@
 #    By: msander <msander@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/02/26 17:19:36 by msander          ###   ########.fr        #
+#    Updated: 2023/02/26 18:45:28 by msander          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS=main.c				\
 	find_cmd.c			\
 	builtins/pwd.c		\
 	builtins/echo.c		\
+	builtins/cd.c		\
 
 OBJS=$(SRCS:%.c=./build/%.o)
 ./build/%.o: %.c $(HEADER)
@@ -25,7 +26,8 @@ OBJS=$(SRCS:%.c=./build/%.o)
 	$(CC) -c $(CFLAGS) $< -o $@
 
 CC=cc
-CFLAGS=-Werror -Wall -Wextra -fPIC -fsanitize=address
+CFLAGS=-Werror -Wall -Wextra -fPIC
+# -fsanitize=address
 # remove late                 ^^^^
 
 LINKERS = -lrt -lm -lreadline

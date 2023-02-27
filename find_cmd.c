@@ -6,7 +6,7 @@
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 03:38:50 by msaner-           #+#    #+#             */
-/*   Updated: 2023/02/22 23:14:10 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/26 21:00:35 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,20 @@ void	exec_argv(char *argv, char **env)
 {
 	if(ft_strncmp(argv, "echo", 4) == 0)
 	{
-		echo(argv);
+		ft_echo(argv);
 		return ;
 	}
-	// if(ft_strncmp(argv, "cd", 2) == 0)
-	if(ft_strncmp(argv, "pwd", 3) == 0)
+	if(ft_strncmp(argv, "cd", 2) == 0)
 	{
-		pwd(env);
+		printf("\n argv:%s\n ANTES DE RODAR O FT_CD\n", argv);
 		return ;
+		ft_cd(argv);
 	}
+	// if(ft_strncmp(argv, "pwd", 3) == 0)
+	// {
+	// 	ft_pwd(env);
+	// 	return ;
+	// }
 	// if(ft_strncmp(argv, "export", 6) == 0)
 	// if(ft_strncmp(argv, "unset", 5) == 0)
 	// if(ft_strncmp(argv, "env", 3) == 0)

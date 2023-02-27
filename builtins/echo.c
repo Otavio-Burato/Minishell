@@ -6,13 +6,13 @@
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:25:12 by msander           #+#    #+#             */
-/*   Updated: 2023/02/26 17:15:25 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/26 18:49:05 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	echo(char *cmd)
+void	ft_echo(char *cmd)
 {
 	int		i;
 	char	**cmd_arg;
@@ -30,4 +30,5 @@ void	echo(char *cmd)
 	}
 	if (ft_strncmp(cmd_arg[1], "-n", 2) != 0)
 		printf("\n");
+	ft_free_array(cmd_arg);
 }
