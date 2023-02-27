@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_readline.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/23 00:18:48 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/26 20:37:15 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_sanitize_line(char *line)
+char	*ft_sanitize_line(char *line)
 {
-	if (!line)
-		return (0);
-	return (1);
+	line = ft_strtrim(line, " ");
+	line = ft_spacetrim(line);
+	return (line);
 }
 
-static void	execute_the_line(char *line, char **env)
+void	execute_the_line(char *line, char **env)
 {
 	pid_t	pid;
 	char	**commands;
 
 	commands = ft_split(line, '|');
-
+	free(line);
 	while(*commands)
 	{
 		pid = fork();
@@ -37,12 +37,14 @@ static void	execute_the_line(char *line, char **env)
 		}
 		commands++;
 	}
+	ft_free_array(commands);
 }
 
 void	ft_read_line(char **env)
 {
 	char	*line;
 	char	*cwd;
+	printf("\nok:\t%s\n", *env);
 
 	cwd = getcwd(NULL, 0);
 	g_data.pwd_prompt = ft_strjoin(cwd, "$: ");
@@ -53,8 +55,7 @@ void	ft_read_line(char **env)
 		return ;
 	if (line && *line)
 		add_history(line);
-	execute_the_line(line, env);
-	free(g_data.cmd);
 	ft_sanitize_line(line);
-	g_data.cmd = line;
+	// execute_the_line(line, env);
+	free(line);
 }

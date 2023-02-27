@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/26 18:22:44 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/26 21:26:30 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_read_line(char **env);
  * @param line
  * @return int return 1 to OK and 0 to NOK
  */
-int		ft_sanitize_line(char *line);
+char	*ft_sanitize_line(char *line);
 // end prompt
 
 /**

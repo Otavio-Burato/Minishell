@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 03:38:50 by msaner-           #+#    #+#             */
-/*   Updated: 2023/02/26 21:00:35 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/26 21:26:07 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,19 @@ char	*find_path(char *cmd, char **env)
 	return (0);
 }
 
-void    execute(char *argv, char **env)
+void	execute(char *argv, char **env)
 {
-    char    *path;
-    char    **cmd_arg;
+	char	*path;
+	char	**cmd_arg;
 
-    cmd_arg = ft_split_ignore(argv, ' ', '\'');
-    path = find_path(cmd_arg[0], env);
-    if (!path)
-    {
-        ft_free_array(cmd_arg);
-        exit(127);
-    }
-    execve(path, cmd_arg, env);
+	cmd_arg = ft_split_ignore(argv, ' ', '\'');
+	path = find_path(cmd_arg[0], env);
+	if (!path)
+	{
+		ft_free_array(cmd_arg);
+		exit(127);
+	}
+	execve(path, cmd_arg, env);
 }
 
 void	exec_argv(char *argv, char **env)
