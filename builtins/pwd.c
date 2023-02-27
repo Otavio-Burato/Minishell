@@ -6,7 +6,7 @@
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:05:13 by msander           #+#    #+#             */
-/*   Updated: 2023/02/26 18:48:42 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/26 21:30:39 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,4 @@ void	ft_pwd(char **env)
 
 	path = find_in_env(env, "PWD");
 	path = path + 4;
-	printf("%s\n", path);
 }

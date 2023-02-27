@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_readline.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/26 20:37:15 by oburato          ###   ########.fr       */
+/*   Updated: 2023/02/26 21:28:44 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	ft_read_line(char **env)
 {
 	char	*line;
 	char	*cwd;
-	printf("\nok:\t%s\n", *env);
 
 	cwd = getcwd(NULL, 0);
 	g_data.pwd_prompt = ft_strjoin(cwd, "$: ");
@@ -56,6 +55,6 @@ void	ft_read_line(char **env)
 	if (line && *line)
 		add_history(line);
 	ft_sanitize_line(line);
-	// execute_the_line(line, env);
+	execute_the_line(line, env);
 	free(line);
 }

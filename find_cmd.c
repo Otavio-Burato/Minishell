@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 03:38:50 by msaner-           #+#    #+#             */
-/*   Updated: 2023/02/26 21:26:07 by oburato          ###   ########.fr       */
+/*   Updated: 2023/02/26 21:31:05 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,14 @@ void	exec_argv(char *argv, char **env)
 	if(ft_strncmp(argv, "cd", 2) == 0)
 	{
 		printf("\n argv:%s\n ANTES DE RODAR O FT_CD\n", argv);
-		return ;
 		ft_cd(argv);
+		return ;
 	}
-	// if(ft_strncmp(argv, "pwd", 3) == 0)
-	// {
-	// 	ft_pwd(env);
-	// 	return ;
-	// }
+	if(ft_strncmp(argv, "pwd", 3) == 0)
+	{
+		ft_pwd(env);
+		return ;
+	}
 	// if(ft_strncmp(argv, "export", 6) == 0)
 	// if(ft_strncmp(argv, "unset", 5) == 0)
 	// if(ft_strncmp(argv, "env", 3) == 0)
