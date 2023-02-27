@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:25:12 by msander           #+#    #+#             */
-/*   Updated: 2023/02/26 18:49:05 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/26 22:00:04 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_echo(char *cmd)
 	int		i;
 	char	**cmd_arg;
 
-	cmd_arg = ft_split(cmd, ' ');
+	cmd_arg = ft_split_ignore(cmd, ' ', '"');
 	i = 1;
 	if (ft_strncmp(cmd_arg[i], "-n", 2) == 0)
 		i++;
