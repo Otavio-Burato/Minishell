@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_readline.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/26 21:28:44 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/26 21:40:02 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	execute_the_line(char *line, char **env)
 	char	**commands;
 
 	commands = ft_split(line, '|');
-	free(line);
 	while(*commands)
 	{
 		pid = fork();
@@ -37,7 +36,6 @@ void	execute_the_line(char *line, char **env)
 		}
 		commands++;
 	}
-	ft_free_array(commands);
 }
 
 void	ft_read_line(char **env)
