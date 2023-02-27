@@ -6,7 +6,7 @@
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 17:58:05 by msander           #+#    #+#             */
-/*   Updated: 2023/02/26 21:07:08 by msander          ###   ########.fr       */
+/*   Updated: 2023/02/26 21:23:51 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_cd(char *args)
 
 	args_splited = ft_split(args, ' ');
 	path = (const char*)args_splited[1];
+	printf("\n\n arg[1]: |%s|", args_splited[1]);
 	printf("\n\n path: |%s|", path);
 	path = ft_strtrim(path, " ");
 	result = chdir(path);
