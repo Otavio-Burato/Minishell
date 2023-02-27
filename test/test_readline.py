@@ -47,7 +47,7 @@ class TestSanitize(unittest.TestCase):
 		cstring = c_char_p(b"echo -n   '    teste'  -l")
 		load.ft_sanitize_line.restype = c_char_p
 		result = load.ft_sanitize_line(cstring)
-		self.assertEqual(cast(result, c_char_p).value, b"echo -n '    teste'  -l")
+		self.assertEqual(cast(result, c_char_p).value, b"echo -n '    teste' -l")
 
 		cstring = c_char_p(b'echo -n   "   \'  haha  \' teste"')
 		load.ft_sanitize_line.restype = c_char_p
