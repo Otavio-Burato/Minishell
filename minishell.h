@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/26 21:26:30 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/02 18:35:17 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_data
 {
 	char	**argv;
 	char	**envp;
+	char	**commands;
 	char	*cmd;
 	char	*pwd_prompt;
 }			t_data;
@@ -63,7 +64,7 @@ char	*ft_sanitize_line(char *line);
  * @param cmd, env
  * @return void
  */
-void	exec_argv(char *argv, char **env);
+int		exec_argv(char *argv, char **env);
 
 /**
  * @brief function to find specific line in ENV

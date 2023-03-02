@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: msander <msander@student.42.fr>            +#+  +:+       +#+         #
+#    By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/02/26 21:29:34 by msander          ###   ########.fr        #
+#    Updated: 2023/03/02 18:58:09 by oburato          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,7 @@ OBJS=$(SRCS:%.c=./build/%.o)
 	$(CC) -c $(CFLAGS) $< -o $@
 
 CC=cc
-CFLAGS=-Werror -Wall -Wextra -fPIC
-#-fsanitize=address
+CFLAGS=-Werror -Wall -Wextra -fPIC #-fsanitize=address
 # remove late                 ^^^^
 
 LINKERS = -lrt -lm -lreadline
@@ -66,6 +65,6 @@ cleant: clean
 test: re cleant shared
 
 run:	all
-	@valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --trace-children=yes --trace-children-skip='/bin/,/sbin/' --suppressions=readline.supp ./minishell
+	@valgrind --track-fds=yes --quiet -s --leak-check=full --show-leak-kinds=all --track-origins=yes --trace-children=yes --trace-children-skip='/bin/,/sbin/,/usr/' --suppressions=readline.supp ./minishell
 
 .PHONY:	all clean fclean re

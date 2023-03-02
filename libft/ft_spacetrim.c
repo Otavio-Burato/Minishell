@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 18:20:45 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/26 21:05:56 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/01 22:11:50 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_spacetrim(char *string)
 
 	len = ft_strlen(string);
 	index = 0;
-	while (index++ < len)
+	while (index < len)
 	{
 		ft_skip(string, &index);
 		if (string[index] == ' ' && string[index + 1] == ' ')
@@ -45,6 +45,7 @@ char	*ft_spacetrim(char *string)
 			len--;
 			index--;
 		}
+		index++;
 	}
 	return (string);
 }

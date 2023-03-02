@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 23:07:18 by msander           #+#    #+#             */
-/*   Updated: 2023/02/26 20:40:50 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/01 22:45:04 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	ft_count_slices_ign(char const *s, char c, char ign)
 	return (slices);
 }
 
-static int	slice_len(char *s, char c, char ign)
+static int	slice_len(char const *s, char c, char ign)
 {
 	size_t	slices;
 	int		index;
@@ -64,7 +64,7 @@ static int	slice_len(char *s, char c, char ign)
 	return (index);
 }
 
-static void	ft_slices_ignore(char **splited, char *s, char c, char ign)
+static void	ft_slices_ignore(char **splited, char const *s, char c, char ign)
 {
 	size_t	index;
 	size_t	position;
@@ -91,7 +91,7 @@ static void	ft_slices_ignore(char **splited, char *s, char c, char ign)
 	splited[position] = NULL;
 }
 
-char	**ft_split_ignore(char *s, char c, char ign)
+char	**ft_split_ignore(char const *s, char c, char ign)
 {
 	char	**splited;
 	int		slices;

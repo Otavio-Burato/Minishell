@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 03:38:50 by msaner-           #+#    #+#             */
-/*   Updated: 2023/02/26 21:31:05 by msander          ###   ########.fr       */
+/*   Updated: 2023/03/02 18:39:17 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,44 +60,36 @@ char	*find_path(char *cmd, char **env)
 	return (0);
 }
 
-void	execute(char *argv, char **env)
+int	ft_execute(char *argv, char **env)
 {
 	char	*path;
 	char	**cmd_arg;
 
 	cmd_arg = ft_split_ignore(argv, ' ', '\'');
 	path = find_path(cmd_arg[0], env);
+	printf("\nDEBUG\n");
 	if (!path)
 	{
 		ft_free_array(cmd_arg);
-		exit(127);
+		return (127);
 	}
 	execve(path, cmd_arg, env);
+	return (0);
 }
 
-void	exec_argv(char *argv, char **env)
+int	exec_argv(char *argv, char **env)
 {
-	if(ft_strncmp(argv, "echo", 4) == 0)
-	{
+	if (ft_strncmp(argv, "echo", 4) == 0)
 		ft_echo(argv);
-		return ;
-	}
-	if(ft_strncmp(argv, "cd", 2) == 0)
-	{
-		printf("\n argv:%s\n ANTES DE RODAR O FT_CD\n", argv);
+	else if (ft_strncmp(argv, "cd", 2) == 0)
 		ft_cd(argv);
-		return ;
-	}
-	if(ft_strncmp(argv, "pwd", 3) == 0)
-	{
+	else if (ft_strncmp(argv, "pwd", 3) == 0)
 		ft_pwd(env);
-		return ;
-	}
 	// if(ft_strncmp(argv, "export", 6) == 0)
 	// if(ft_strncmp(argv, "unset", 5) == 0)
 	// if(ft_strncmp(argv, "env", 3) == 0)
 	// if(ft_strncmp(argv, "exit", 4) == 0)
-
-	execute(argv, env);
-	return ;
+	else
+		return (ft_execute(argv, env));
+	return (0);
 }

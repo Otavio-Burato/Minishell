@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/26 21:58:52 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/02 18:54:31 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,42 @@
 
 char	*ft_sanitize_line(char *line)
 {
-	line = ft_strtrim(line, " ");
-	line = ft_spacetrim(line);
-	return (line);
+	char	*clear_line;
+
+	clear_line = ft_spacetrim(ft_strtrim(line, " "));
+	free(line);
+	return (clear_line);
 }
 
 void	execute_the_line(char *line, char **env)
 {
 	pid_t	pid;
 	char	**commands;
+	int		index;
+	int		response;
 
+	index = 0;
 	commands = ft_split(line, '|');
-	while(*commands)
+	free(line);
+	while (commands[index])
 	{
 		pid = fork();
-		if(pid == 0)
-			exec_argv(*commands, env);
+		if (pid == 0)
+		{
+			response = exec_argv(commands[index], env);
+			if (response != 0)
+			{
+				ft_free_array(commands);
+				exit(response);
+			}
+		}
 		else
 		{
 			waitpid(pid, NULL, 0);
 		}
-		commands++;
+		index++;
 	}
+	ft_free_array(commands);
 }
 
 void	ft_read_line(char **env)
@@ -54,5 +68,4 @@ void	ft_read_line(char **env)
 		add_history(line);
 	line = ft_sanitize_line(line);
 	execute_the_line(line, env);
-	free(line);
 }
