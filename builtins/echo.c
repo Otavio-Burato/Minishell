@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 22:45:23 by oburato           #+#    #+#             */
-/*   Updated: 2022/04/10 23:17:58 by oburato          ###   ########.fr       */
+/*   Created: 2023/02/22 16:25:12 by msander           #+#    #+#             */
+/*   Updated: 2023/03/02 19:01:17 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../minishell.h"
 
-int	ft_strncmp(const char *str1, const char *str2, size_t n)
+void	ft_echo(char *cmd)
 {
-	size_t	i;
+	int		i;
+	char	**cmd_arg;
 
-	i = 0;
-	while (n && (str1[i] || str2[i]))
-	{
-		if (str1[i] != str2[i])
-			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+	cmd_arg = ft_split_ignore(cmd, ' ', '"');
+	i = 1;
+	if (ft_strncmp(cmd_arg[i], "-n", 2) == 0)
 		i++;
-		n--;
+	while (cmd_arg[i])
+	{
+		printf("%s", cmd_arg[i]);
+		if (cmd_arg[i] +1 != 0)
+			printf(" ");
+		i++;
 	}
-	return (0);
+	if (ft_strncmp(cmd_arg[1], "-n", 2) != 0)
+		printf("\n");
+	ft_free_array(cmd_arg);
 }

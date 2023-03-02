@@ -6,20 +6,51 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/19 10:31:51 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/02 19:01:57 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_sanitize_line(char *line)
+char	*ft_sanitize_line(char *line)
 {
-	if (!line)
-		return (0);
-	return (1);
+	char	*clear_line;
+
+	clear_line = ft_spacetrim(ft_strtrim(line, " "));
+	free(line);
+	return (clear_line);
 }
 
-void	ft_read_line(void)
+void	execute_the_line(char *line, char **env)
+{
+	pid_t	pid;
+	char	**commands;
+	int		index;
+	int		response;
+
+	index = 0;
+	commands = ft_split(line, '|');
+	free(line);
+	while (commands[index])
+	{
+		pid = fork();
+		if (pid == 0)
+		{
+			response = exec_argv(commands[index], env);
+			if (response != 0)
+			{
+				ft_free_array(commands);
+				exit(response);
+			}
+		}
+		else
+			waitpid(pid, NULL, 0);
+		index++;
+	}
+	ft_free_array(commands);
+}
+
+void	ft_read_line(char **env)
 {
 	char	*line;
 	char	*cwd;
@@ -33,7 +64,6 @@ void	ft_read_line(void)
 		return ;
 	if (line && *line)
 		add_history(line);
-	ft_sanitize_line(line);
-	free(g_data.cmd);
-	g_data.cmd = line;
+	line = ft_sanitize_line(line);
+	execute_the_line(line, env);
 }
