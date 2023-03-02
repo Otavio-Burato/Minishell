@@ -6,7 +6,7 @@
 #    By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/03/02 18:58:09 by oburato          ###   ########.fr        #
+#    Updated: 2023/03/02 19:43:23 by oburato          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ SRCS=main.c				\
 	ft_readline.c		\
 	ft_tokenize.c		\
 	find_cmd.c			\
+	ft_signal.c			\
+	ft_free.c			\
 	builtins/pwd.c		\
 	builtins/echo.c		\
 	builtins/cd.c		\
