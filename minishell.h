@@ -83,4 +83,25 @@ void	ft_cd(char *args);
 
 typedef struct sigaction	t_sigaction;
 
+/**
+ * @brief the int signal is the ^C signal and it is captured
+ * and manipulated in this function
+ * @param signal  2
+ */
+void	ft_handle_sigint(int signal);
+
+/**
+ * @brief
+ */
+void	ft_load_signal(void);
+//end signals
+
+//init free
+
+/**
+ * @brief
+ */
+void	ft_destruct_global_variable(void);
+//end free
+
 #endif

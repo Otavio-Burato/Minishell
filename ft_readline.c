@@ -57,9 +57,9 @@ void	ft_read_line(char **env)
 
 	cwd = getcwd(NULL, 0);
 	g_data.pwd_prompt = ft_strjoin(cwd, "$: ");
+	free(cwd);
 	line = readline(g_data.pwd_prompt);
 	free(g_data.pwd_prompt);
-	free(cwd);
 	if (line == NULL)
 		return ;
 	if (line && *line)

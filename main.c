@@ -25,6 +25,7 @@ static void	ft_load_args(int argc, char *argv[], char *envp[])
 int	main(int argc, char *argv[], char *envp[])
 {
 	ft_load_args(argc, argv, envp);
+	ft_load_signal();
 	while (1)
 	{
 		ft_read_line(envp);
