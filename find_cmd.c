@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 03:38:50 by msaner-           #+#    #+#             */
-/*   Updated: 2023/03/02 18:39:17 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/02 19:00:21 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,6 @@ int	exec_argv(char *argv, char **env)
 		ft_cd(argv);
 	else if (ft_strncmp(argv, "pwd", 3) == 0)
 		ft_pwd(env);
-	// if(ft_strncmp(argv, "export", 6) == 0)
-	// if(ft_strncmp(argv, "unset", 5) == 0)
-	// if(ft_strncmp(argv, "env", 3) == 0)
-	// if(ft_strncmp(argv, "exit", 4) == 0)
 	else
 		return (ft_execute(argv, env));
 	return (0);

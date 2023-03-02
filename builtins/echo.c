@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:25:12 by msander           #+#    #+#             */
-/*   Updated: 2023/02/26 22:00:04 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/02 19:01:17 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_echo(char *cmd)
 	while (cmd_arg[i])
 	{
 		printf("%s", cmd_arg[i]);
-		if(cmd_arg[i] +1 != 0)
+		if (cmd_arg[i] +1 != 0)
 			printf(" ");
 		i++;
 	}

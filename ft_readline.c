@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
-/*   Updated: 2023/03/02 18:54:31 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/02 19:01:57 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ void	execute_the_line(char *line, char **env)
 			}
 		}
 		else
-		{
 			waitpid(pid, NULL, 0);
-		}
 		index++;
 	}
 	ft_free_array(commands);

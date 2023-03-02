@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 17:58:05 by msander           #+#    #+#             */
-/*   Updated: 2023/02/26 21:23:51 by msander          ###   ########.fr       */
+/*   Updated: 2023/03/02 19:02:10 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_cd(char *args)
 	int			result;
 
 	args_splited = ft_split(args, ' ');
-	path = (const char*)args_splited[1];
+	path = (const char *) args_splited[1];
 	printf("\n\n arg[1]: |%s|", args_splited[1]);
 	printf("\n\n path: |%s|", path);
 	path = ft_strtrim(path, " ");
