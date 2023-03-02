@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 19:01:23 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/22 16:11:31 by msander          ###   ########.fr       */
+/*   Created: 2023/02/22 16:05:13 by msander           #+#    #+#             */
+/*   Updated: 2023/02/26 21:30:39 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-t_data	g_data;
-
-static void	ft_load_args(int argc, char *argv[], char *envp[])
+void	ft_pwd(char **env)
 {
-	if (argc > 1)
-		exit(2);
-	g_data.argv = argv;
-	g_data.envp = envp;
-}
+	char	*path;
 
-int	main(int argc, char *argv[], char *envp[])
-{
-	ft_load_args(argc, argv, envp);
-	while (1)
-	{
-		ft_read_line(envp);
-	}
-	return (0);
+	path = find_in_env(env, "PWD");
+	path = path + 4;
 }

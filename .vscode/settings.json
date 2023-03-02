@@ -12,6 +12,10 @@
 		"*.excalidraw": "json",
 		"*.excalidrawlib": "json",
 		"readline.h": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"wait.h": "c",
+		"minishell.h": "c",
+		"functional": "c",
+		"string_view": "c"
 	}
 }

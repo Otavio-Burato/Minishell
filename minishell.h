@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/21 14:41:54 by msander          ###   ########.fr       */
+/*   Updated: 2023/03/02 18:35:17 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <fcntl.h>
+# include <sys/wait.h>
 
 # include <sys/types.h>
 
@@ -33,6 +35,7 @@ typedef struct s_data
 {
 	char	**argv;
 	char	**envp;
+	char	**commands;
 	char	*cmd;
 	char	*pwd_prompt;
 }			t_data;
@@ -52,16 +55,31 @@ void	ft_read_line(char **env);
  * @param line
  * @return int return 1 to OK and 0 to NOK
  */
-int		ft_sanitize_line(char *line);
+char	*ft_sanitize_line(char *line);
 // end prompt
 
 /**
- * @brief functionj to find comand path in ENV or redirect to builtins
+ * @brief function to execute comand
  *
- * @param line
- * @return int return 1 to OK and 0 to NOK
+ * @param cmd, env
+ * @return void
  */
-int		find_cmd(char *cmd, char **env);
+int		exec_argv(char *argv, char **env);
+
+/**
+ * @brief function to find specific line in ENV
+ *
+ * @param env, target
+ * @return char *, the line
+ */
+char	*find_in_env(char **env, char *target);
+
+/**
+ * @brief Builtins
+*/
+void	ft_pwd(char **env);
+void	ft_echo(char *cmd);
+void	ft_cd(char *args);
 
 typedef struct sigaction	t_sigaction;
 

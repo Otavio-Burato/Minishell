@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/01 18:29:06 by oburato           #+#    #+#             */
-/*   Updated: 2023/03/01 21:24:47 by oburato          ###   ########.fr       */
+/*   Created: 2023/02/22 16:25:12 by msander           #+#    #+#             */
+/*   Updated: 2023/03/02 19:01:17 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../minishell.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+void	ft_echo(char *cmd)
 {
-	unsigned int	start;
-	size_t			len;
+	int		i;
+	char	**cmd_arg;
 
-	start = 0;
-	if (!s1 || !set)
-		return (NULL);
-	while (ft_strchr(set, s1[start]) && s1[start])
-		start++;
-	len = ft_strlen(s1);
-	while (ft_strchr(set, s1[len]) && len)
-		len--;
-	return (ft_substr(s1, start, len - start + 1));
+	cmd_arg = ft_split_ignore(cmd, ' ', '"');
+	i = 1;
+	if (ft_strncmp(cmd_arg[i], "-n", 2) == 0)
+		i++;
+	while (cmd_arg[i])
+	{
+		printf("%s", cmd_arg[i]);
+		if (cmd_arg[i] +1 != 0)
+			printf(" ");
+		i++;
+	}
+	if (ft_strncmp(cmd_arg[1], "-n", 2) != 0)
+		printf("\n");
+	ft_free_array(cmd_arg);
 }
