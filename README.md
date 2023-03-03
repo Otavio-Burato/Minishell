@@ -10,3 +10,12 @@ some reference
 
 https://github.com/djboni/unit_test_c_with_python
 
+infile e outfile
+são retirados do projeto final
+
+< infile cat
+
+criar uma tabela de variaveis
+expandir as variaveis
+
+configuração dos sinais

@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 10:20:18 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/19 14:00:14 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/03 18:51:30 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,22 @@
 void	ft_load_signal(void)
 {
 	sigset_t	mask;
-	t_sigaction	sigint;
+	t_sigaction	act;
 
-	sigemptyset(&mask);
-	sigint.sa_flags = SA_RESTART;
-	sigint.sa_mask = mask;
-	sigint.sa_handler = &ft_handle_sigint;
-	sigaction(SIGINT, &sigint, NULL);
+	sigfillset(&mask);
+	act.sa_mask = mask;
+	act.sa_flags = SA_RESTART;
+	act.sa_handler = &ft_handle_sigint;
+	sigaction(SIGINT, &act, NULL);
 }
 
 void	ft_handle_sigint(int signal)
 {
-	printf("^C\n");
-	ft_destruct_global_variable();
-	exit(signal);
+	if (g_data.pid)
+	{
+		kill(g_data.pid, signal);
+		printf("\n");
+	}
+	else
+		printf("\n");
 }
