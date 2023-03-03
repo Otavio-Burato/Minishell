@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 03:38:50 by msaner-           #+#    #+#             */
-/*   Updated: 2023/03/02 19:00:21 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/02 23:09:32 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int	ft_execute(char *argv, char **env)
 
 	cmd_arg = ft_split_ignore(argv, ' ', '\'');
 	path = find_path(cmd_arg[0], env);
-	printf("\nDEBUG\n");
 	if (!path)
 	{
 		ft_free_array(cmd_arg);

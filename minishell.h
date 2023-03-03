@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/03/02 18:35:17 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/03 19:05:55 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
  */
 typedef struct s_data
 {
+	pid_t	pid;
 	char	**argv;
 	char	**envp;
 	char	**commands;

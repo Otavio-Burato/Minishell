@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
-/*   Updated: 2023/03/02 19:01:57 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/02 20:48:36 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ char	*ft_sanitize_line(char *line)
 
 void	execute_the_line(char *line, char **env)
 {
-	pid_t	pid;
 	char	**commands;
 	int		index;
 	int		response;
@@ -33,8 +32,8 @@ void	execute_the_line(char *line, char **env)
 	free(line);
 	while (commands[index])
 	{
-		pid = fork();
-		if (pid == 0)
+		g_data.pid = fork();
+		if (g_data.pid == 0)
 		{
 			response = exec_argv(commands[index], env);
 			if (response != 0)
@@ -44,7 +43,7 @@ void	execute_the_line(char *line, char **env)
 			}
 		}
 		else
-			waitpid(pid, NULL, 0);
+			waitpid(g_data.pid, NULL, 0);
 		index++;
 	}
 	ft_free_array(commands);
@@ -59,6 +58,8 @@ void	ft_read_line(char **env)
 	g_data.pwd_prompt = ft_strjoin(cwd, "$: ");
 	free(cwd);
 	line = readline(g_data.pwd_prompt);
+	if (!line)
+		exit(EOF); // TODO: chama a ft_exit
 	free(g_data.pwd_prompt);
 	if (line == NULL)
 		return ;
