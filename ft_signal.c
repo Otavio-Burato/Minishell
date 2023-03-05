@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 10:20:18 by oburato           #+#    #+#             */
-/*   Updated: 2023/03/03 18:51:30 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/04 17:50:42 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,20 @@
 
 void	ft_load_signal(void)
 {
-	sigset_t	mask;
-	t_sigaction	act;
-
-	sigfillset(&mask);
-	act.sa_mask = mask;
-	act.sa_flags = SA_RESTART;
-	act.sa_handler = &ft_handle_sigint;
-	sigaction(SIGINT, &act, NULL);
+	signal(SIGINT, ft_handle_sigint);
+	signal(SIGQUIT, ft_handle_sigint);
 }
 
-void	ft_handle_sigint(int signal)
+void	ft_handle_sigint(int signum)
 {
-	if (g_data.pid)
+	char	*cwd;
+
+	if (signum == SIGINT)
 	{
-		kill(g_data.pid, signal);
 		printf("\n");
+		cwd = getcwd(NULL, 0);
+		g_data.pwd_prompt = ft_strjoin(cwd, "$: ");
+		printf("%s", g_data.pwd_prompt);
+		free(cwd);
 	}
-	else
-		printf("\n");
 }

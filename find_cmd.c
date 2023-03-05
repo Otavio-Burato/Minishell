@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 03:38:50 by msaner-           #+#    #+#             */
-/*   Updated: 2023/03/02 23:09:32 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/05 11:58:10 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	ft_execute(char *argv, char **env)
 		ft_free_array(cmd_arg);
 		return (127);
 	}
-	execve(path, cmd_arg, env);
+	g_data.signal = execve(path, cmd_arg, env);
 	return (0);
 }
 

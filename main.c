@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:23 by oburato           #+#    #+#             */
-/*   Updated: 2023/02/22 16:11:31 by msander          ###   ########.fr       */
+/*   Updated: 2023/03/05 12:06:21 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ int	main(int argc, char *argv[], char *envp[])
 {
 	ft_load_args(argc, argv, envp);
 	ft_load_signal();
+	g_data.signal = 0;
 	while (1)
 	{
 		ft_read_line(envp);
 	}
-	return (0);
+	return (g_data.signal);
 }

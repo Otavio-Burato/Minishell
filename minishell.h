@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/03/03 19:05:55 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/05 12:06:38 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_data
 	char	**commands;
 	char	*cmd;
 	char	*pwd_prompt;
+	int		signal;
 }			t_data;
 
 extern t_data				g_data;
@@ -104,5 +105,7 @@ void	ft_load_signal(void);
  */
 void	ft_destruct_global_variable(void);
 //end free
+
+void	ft_execute_the_line(char *line, char **env);
 
 #endif
