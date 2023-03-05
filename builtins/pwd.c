@@ -6,16 +6,18 @@
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:05:13 by msander           #+#    #+#             */
-/*   Updated: 2023/02/26 21:30:39 by msander          ###   ########.fr       */
+/*   Updated: 2023/03/04 23:11:15 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_pwd(char **env)
+void	ft_pwd(void)
 {
-	char	*path;
+	char	path[FILENAME_MAX];
 
-	path = find_in_env(env, "PWD");
-	path = path + 4;
+	if (getcwd(path, sizeof(path)))
+		printf("%s\n", path);
+	else
+		perror("getcwd() error");
 }
