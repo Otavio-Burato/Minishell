@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 03:38:50 by msaner-           #+#    #+#             */
-/*   Updated: 2023/03/02 23:09:32 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/04 17:40:33 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	exec_argv(char *argv, char **env)
 		ft_echo(argv);
 	else if (ft_strncmp(argv, "cd", 2) == 0)
 		ft_cd(argv);
-	else if (ft_strncmp(argv, "pwd", 3) == 0)
+	else if (ft_strncmp(argv, "pwd ", 3) == 0)
 		ft_pwd(env);
 	else
 		return (ft_execute(argv, env));

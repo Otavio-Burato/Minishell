@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/03/03 19:05:55 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/04 17:39:51 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*find_in_env(char **env, char *target);
 /**
  * @brief Builtins
 */
-void	ft_pwd(char **env);
+void	ft_pwd();
 void	ft_echo(char *cmd);
 void	ft_cd(char *args);
 
