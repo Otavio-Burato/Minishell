@@ -6,7 +6,7 @@
 /*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/03/04 17:39:51 by msander          ###   ########.fr       */
+/*   Updated: 2023/03/04 23:10:08 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*find_in_env(char **env, char *target);
 /**
  * @brief Builtins
 */
-void	ft_pwd();
+void	ft_pwd(void);
 void	ft_echo(char *cmd);
 void	ft_cd(char *args);
 
