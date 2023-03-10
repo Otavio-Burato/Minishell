@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
-/*   Updated: 2023/03/05 12:06:40 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/09 22:27:49 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,13 @@ void	ft_read_line(char **env)
 {
 	char	*line;
 	char	*cwd;
+	char	*join;
 
 	cwd = getcwd(NULL, 0);
-	g_data.pwd_prompt = ft_strjoin(cwd, "$: ");
+	join = ft_strjoin(cwd, "$: ");
+	g_data.pwd_prompt = ft_strjoin("\r", join);
 	free(cwd);
+	free(join);
 	line = readline(g_data.pwd_prompt);
 	free(g_data.pwd_prompt);
 	if (!line)

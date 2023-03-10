@@ -6,12 +6,13 @@
 #    By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/03/04 00:19:15 by oburato          ###   ########.fr        #
+#    Updated: 2023/03/09 23:08:19 by oburato          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=minishell
 SRCS=main.c				\
+	debug.c				\
 	ft_readline.c		\
 	ft_tokenize.c		\
 	find_cmd.c			\
@@ -28,7 +29,7 @@ OBJS=$(SRCS:%.c=./build/%.o)
 	$(CC) -c $(CFLAGS) $< -o $@
 
 CC=cc
-CFLAGS=-Werror -Wall -Wextra -fPIC #-fsanitize=address
+CFLAGS=-Werror -Wall -Wextra -fPIC -g3 #-fsanitize=address
 # remove late                 ^^^^
 
 LINKERS = -lrt -lm -lreadline

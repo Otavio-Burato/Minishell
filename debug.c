@@ -1,31 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 22:19:20 by oburato           #+#    #+#             */
-/*   Updated: 2023/03/09 23:52:28 by oburato          ###   ########.fr       */
+/*   Created: 2023/03/09 21:12:41 by oburato           #+#    #+#             */
+/*   Updated: 2023/03/10 00:03:11 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-char	*ft_strdup(const char *s)
+void	db_printlst(void)
 {
-	int		index;
-	int		len;
-	char	*ptr;
+	t_list	*envp = g_data.list;
 
-	index = 0;
-	len = ft_strlen(s);
-	ptr = malloc(len + 1);
-	while (s[index] != '\0')
+	while (envp->next)
 	{
-		ptr[index] = s[index];
+		db_printkey((t_envs *)envp->content);
+		envp = envp->next;
+	}
+	db_printkey((t_envs *)envp->content);
+}
+
+void	db_printkey(t_envs	*map)
+{
+	printf("{%s}=>{%s}\n", map->key, map->value);
+}
+
+void	db_printenvp(char **envp)
+{
+	char	**env;
+	int		index;
+
+	env = envp;
+	index = 0;
+	while (*env != 0)
+	{
+		printf("%s\n", *env);
+		env++;
 		index++;
 	}
-	ptr[index] = '\0';
-	return (ptr);
+	printf("\ntotal de: %d\n\n", index);
 }

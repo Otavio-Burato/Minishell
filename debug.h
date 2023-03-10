@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   debug.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 22:19:20 by oburato           #+#    #+#             */
-/*   Updated: 2023/03/09 23:52:28 by oburato          ###   ########.fr       */
+/*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
+/*   Updated: 2023/03/09 23:56:26 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef DEBUG_H
+# define DEBUG_H
 
-char	*ft_strdup(const char *s)
-{
-	int		index;
-	int		len;
-	char	*ptr;
+# include "./minishell.h"
 
-	index = 0;
-	len = ft_strlen(s);
-	ptr = malloc(len + 1);
-	while (s[index] != '\0')
-	{
-		ptr[index] = s[index];
-		index++;
-	}
-	ptr[index] = '\0';
-	return (ptr);
-}
+void	db_printlst(void);
+
+void	db_printkey(t_envs	*signal);
+
+void	db_printenvp(char **envp);
+
+#endif

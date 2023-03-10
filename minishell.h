@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/03/05 12:06:38 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/09 21:31:05 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@
 
 # include <sys/types.h>
 
+typedef struct s_envs
+{
+	char	*key;
+	char	*value;
+}			t_envs;
+
 /**
  * @brief Data storage all variable we need
  */
@@ -40,6 +46,7 @@ typedef struct s_data
 	char	*cmd;
 	char	*pwd_prompt;
 	int		signal;
+	t_list	*list;
 }			t_data;
 
 extern t_data				g_data;
@@ -107,5 +114,7 @@ void	ft_destruct_global_variable(void);
 //end free
 
 void	ft_execute_the_line(char *line, char **env);
+
+# include "./debug.h"
 
 #endif
