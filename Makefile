@@ -6,7 +6,7 @@
 #    By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 19:01:36 by oburato           #+#    #+#              #
-#    Updated: 2023/03/09 23:08:19 by oburato          ###   ########.fr        #
+#    Updated: 2023/03/12 13:33:53 by oburato          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS=main.c				\
 	builtins/pwd.c		\
 	builtins/echo.c		\
 	builtins/cd.c		\
+	builtins/exit.c		\
 
 OBJS=$(SRCS:%.c=./build/%.o)
 ./build/%.o: %.c $(HEADER)

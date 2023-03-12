@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:01:33 by oburato           #+#    #+#             */
-/*   Updated: 2023/03/09 21:31:05 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/12 14:05:55 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ extern t_data				g_data;
  * @brief	this function is resposible by read line by line in terminal
  * and make a previos sixtax check
  */
-void	ft_read_line(char **env);
+void	ft_read_line(void);
 
 /**
  * @brief a simple function to sanitize string from prompt
@@ -73,7 +73,7 @@ char	*ft_sanitize_line(char *line);
  * @param cmd, env
  * @return void
  */
-int		exec_argv(char *argv, char **env);
+int		exec_argv(char *argv);
 
 /**
  * @brief function to find specific line in ENV
@@ -86,9 +86,11 @@ char	*find_in_env(char **env, char *target);
 /**
  * @brief Builtins
 */
-void	ft_pwd(char **env);
+void	ft_pwd(void);
 void	ft_echo(char *cmd);
 void	ft_cd(char *args);
+int		ft_exit(int signal);
+void	ft_export(const char *env, const char*value);
 
 typedef struct sigaction	t_sigaction;
 
@@ -113,7 +115,7 @@ void	ft_load_signal(void);
 void	ft_destruct_global_variable(void);
 //end free
 
-void	ft_execute_the_line(char *line, char **env);
+void	ft_execute_the_line(char *line);
 
 # include "./debug.h"
 

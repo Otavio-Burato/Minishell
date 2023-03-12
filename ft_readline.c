@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
-/*   Updated: 2023/03/09 22:27:49 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/12 14:02:47 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_sanitize_line(char *line)
 	return (clear_line);
 }
 
-void	ft_execute_the_line(char *line, char **env)
+void	ft_execute_the_line(char *line)
 {
 	char	**commands;
 	int		index;
@@ -35,11 +35,11 @@ void	ft_execute_the_line(char *line, char **env)
 		ft_load_signal();
 		if (g_data.pid == 0)
 		{
-			g_data.signal = exec_argv(commands[index], env);
+			g_data.signal = exec_argv(commands[index]);
 			if (g_data.signal != 0)
 			{
 				ft_free_array(commands);
-				exit(g_data.signal);
+				ft_exit(g_data.signal);
 			}
 		}
 		else
@@ -49,7 +49,7 @@ void	ft_execute_the_line(char *line, char **env)
 	ft_free_array(commands);
 }
 
-void	ft_read_line(char **env)
+void	ft_read_line(void)
 {
 	char	*line;
 	char	*cwd;
@@ -63,11 +63,11 @@ void	ft_read_line(char **env)
 	line = readline(g_data.pwd_prompt);
 	free(g_data.pwd_prompt);
 	if (!line)
-		exit(EOF); // TODO: chama a ft_exit
+		ft_exit(EOF);
 	if (line == NULL)
 		return ;
 	if (line && *line)
 		add_history(line);
 	line = ft_sanitize_line(line);
-	ft_execute_the_line(line, env);
+	ft_execute_the_line(line);
 }

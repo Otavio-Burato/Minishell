@@ -17,6 +17,7 @@
 		"minishell.h": "c",
 		"functional": "c",
 		"string_view": "c",
-		"fcntl.h": "c"
+		"fcntl.h": "c",
+		"string": "c"
 	}
 }

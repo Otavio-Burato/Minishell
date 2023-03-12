@@ -6,7 +6,7 @@
 /*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 03:38:50 by msaner-           #+#    #+#             */
-/*   Updated: 2023/03/05 11:58:10 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/12 13:09:31 by oburato          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,31 +60,31 @@ char	*find_path(char *cmd, char **env)
 	return (0);
 }
 
-int	ft_execute(char *argv, char **env)
+int	ft_execute(char *argv)
 {
 	char	*path;
 	char	**cmd_arg;
 
 	cmd_arg = ft_split_ignore(argv, ' ', '\'');
-	path = find_path(cmd_arg[0], env);
+	path = find_path(cmd_arg[0], g_data.envp);
 	if (!path)
 	{
 		ft_free_array(cmd_arg);
 		return (127);
 	}
-	g_data.signal = execve(path, cmd_arg, env);
+	g_data.signal = execve(path, cmd_arg, g_data.envp);
 	return (0);
 }
 
-int	exec_argv(char *argv, char **env)
+int	exec_argv(char *argv)
 {
 	if (ft_strncmp(argv, "echo", 4) == 0)
 		ft_echo(argv);
 	else if (ft_strncmp(argv, "cd", 2) == 0)
 		ft_cd(argv);
 	else if (ft_strncmp(argv, "pwd", 3) == 0)
-		ft_pwd(env);
+		ft_pwd();
 	else
-		return (ft_execute(argv, env));
+		return (ft_execute(argv));
 	return (0);
 }
