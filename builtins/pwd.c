@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:05:13 by msander           #+#    #+#             */
-/*   Updated: 2023/03/12 13:09:48 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/13 19:01:58 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	ft_pwd(void)
 {
-	char	*path;
+	char	path[FILENAME_MAX];
 
-	path = find_in_env(g_data.envp, "PWD");
-	path = path + 4;
+	if (getcwd(path, sizeof(path)))
+		printf("%s\n", path);
+	else
+		perror("getcwd() error");
 }

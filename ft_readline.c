@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_readline.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oburato <oburato@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: msander <msander@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 11:37:53 by oburato           #+#    #+#             */
-/*   Updated: 2023/03/12 14:02:47 by oburato          ###   ########.fr       */
+/*   Updated: 2023/03/13 19:06:57 by msander          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	ft_read_line(void)
 	free(cwd);
 	free(join);
 	line = readline(g_data.pwd_prompt);
+	if (!line)
+		exit(EOF); // TODO: chama a ft_exit
 	free(g_data.pwd_prompt);
 	if (!line)
 		ft_exit(EOF);
